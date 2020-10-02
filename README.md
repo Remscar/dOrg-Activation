@@ -1,2 +1,4 @@
-# dOrg-Activation
-Activation Challenge Hack for dOrg (https://dorg.tech/)
+# Virtual (Game) Items
+
+This is my activation challenge hack for dOrg (https://dorg.tech/)
+
