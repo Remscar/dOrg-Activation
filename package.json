@@ -1,0 +1,33 @@
+{
+  "name": "activation",
+  "version": "1.0.0",
+  "description": "This is my activation challenge hack for dOrg (https://dorg.tech/)",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^3.2.0",
+    "@typechain/truffle-v5": "^2.0.2",
+    "@types/web3": "^1.2.2",
+    "typechain": "^2.0.0"
+  },
+  "devDependencies": {
+    "truffle-typings": "^1.0.8"
+  },
+  "scripts": {
+    "generate-types": "typechain --target=truffle-v5 \"./build/contracts/*.json\"",
+    "postinstall": "truffle compile && yarn generate-types",
+    "migrate": "tsc -p ./tsconfig.migrate.json --outDir ./migrations && truffle migrate",
+    "typecheck": "tsc --noEmit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Remscar/dOrg-Activation.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Remscar/dOrg-Activation/issues"
+  },
+  "homepage": "https://github.com/Remscar/dOrg-Activation#readme"
+}
