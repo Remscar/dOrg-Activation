@@ -10,10 +10,10 @@ contract("Realm", function (/* accounts */) {
   it("Creates with expected name", async function () {
     const desiredName = "testRealm";
     const realmInstance = await Realm.new(web3.utils.asciiToHex(desiredName));
-    return assert.equal(await realmInstance.realmName(), desiredName);
+    return assert.equal(await realmInstance.Name(), desiredName);
   });
 
-  
+
 
 
 });

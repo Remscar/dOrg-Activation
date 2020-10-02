@@ -1,12 +1,11 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.4.22 <0.8.0;
 
-import "./interfaces/IRealm.sol";
+import "./interfaces/IItemDefinition.sol";
 
-contract Realm is IRealm {
+contract ItemDefinition is IItemDefinition {
 
   bytes32 _name;
-  address[] _definitions;
 
   constructor(bytes32 name) Ownable() public {
     _name = name;
@@ -16,8 +15,8 @@ contract Realm is IRealm {
     return _name;
   }
 
-  function ItemDefinitions() public override view returns (address[] memory) {
-    return _definitions;
+  function Realm() public override view returns (address) {
+    return owner();
   }
 
 }

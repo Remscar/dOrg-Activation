@@ -94,11 +94,17 @@ I could implement this into one mega Smart Contract if I wanted to, but I'm goin
 
 I haven't developed Smart Contracts in almost two years.
 
+### 1:53 PM
+
 Setting up my dev environment took longer than expected. I used truffle before so I figured out how to get that working again. I also found something called `typechain` which allows me to program in TypeScript which I highly prefer over plain old JavaScript.
 
 I'm going to be creating the contracts and developing tests to prove their functionality.
 
 I'll start with the Realm contract, but first I need to figure out how to make Solidity interfaces again.
+
+Made the first commit.
+
+
 
 
 
