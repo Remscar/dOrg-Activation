@@ -112,6 +112,8 @@ Realizing the the hand-off between the two realms is going to be a bit tricky.
 
 Thinking of writing a sequence diagram of it.
 
+![Handoff Diagram](images/item-handoff.png)
+
 Took a break until ~4:30PM
 
 ### 4:30 PM
