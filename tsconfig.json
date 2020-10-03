@@ -3,7 +3,7 @@
       "lib": ["ES2018", "DOM"],
       "module": "CommonJS",
       "moduleResolution": "node",
-      "strict": true,
+      "strict": false,
       "target": "ES2018",
       "sourceMap": true,
       "esModuleInterop": true

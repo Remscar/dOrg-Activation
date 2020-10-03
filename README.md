@@ -104,10 +104,32 @@ I'll start with the Realm contract, but first I need to figure out how to make S
 
 Made the first commit.
 
+### 2:48 PM
+
+Started to flesh out more of the contracts. Had to brush up on storage vs memory and the new solidity stuff.
+
+Realizing the the hand-off between the two realms is going to be a bit tricky.
+
+Thinking of writing a sequence diagram of it.
+
+Took a break until ~4:30PM
+
+### 4:30 PM
+
+Figuring out sequence of handing off an item between one realm to another.
+
+A `Realm` needs to keep track of all items a player owns. When a item gets moved from one realm to another, it needs to be removed from one realm and added to the other.
+
+### 6:10 PM
+
+Main code is done in the contracts. Ditched all of the interfaces since this is a hack and it takes too much time to fix them. I'm remembering all of those strange quirks working with Solidity now.
+
+Now it's time to write the tests to make sure it works.
 
 
+### 6:30 PM
 
-
+Tests are coming along. Need to stop for the day.
 
 
 

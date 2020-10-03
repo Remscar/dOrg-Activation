@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.4.22 <0.8.0;
 
-import "./interfaces/IItemDefinition.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract ItemDefinition is IItemDefinition {
+contract ItemDefinition is Ownable {
 
   bytes32 _name;
 
@@ -11,11 +11,11 @@ contract ItemDefinition is IItemDefinition {
     _name = name;
   }
 
-  function Name() public override view returns (bytes32) {
+  function Name() public view returns (bytes32) {
     return _name;
   }
 
-  function Realm() public override view returns (address) {
+  function Realm() public view returns (address) {
     return owner();
   }
 
