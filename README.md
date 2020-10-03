@@ -59,13 +59,13 @@ Diagrams because I like them.
 
 #### Diagram of ownership hierarchy
 
-[Hierarchy](images/design1.png)
+![Hierarchy](images/design1.png)
 
 Even though the Item Definition "Owns" or "Defines" an Item inside of a Realm, the player has authority over that item, allowing the Item to be manipulated by the player.
 
 #### Transfer process diagram
 
-[Transfer items](images/design2.png)
+![Transfer items](images/design2.png)
 
 A `player` can initiate the transfer of an `Item` between one `Realm` to another. Since the `player` has authority over the `Item` they can cause the `Item` to be moved to a `Transmutation` pattern in another `Realm`, thus releasing the `Item` from the first `Realm` and having it exist inside of the new `Realm`.
 
@@ -73,7 +73,7 @@ While these `Transmutation` patterns could be circular, they don't necessarily h
 
 #### Transfer process diagram with a loop
 
-[Transfer items with loop](images/design2-loop.png)
+![Transfer items with loop](images/design2-loop.png)
 
 ## Time to implement?
 
