@@ -82,9 +82,12 @@ contract Realm is Ownable {
     require(playerOwner == msg.sender, "Only the player owner of an item may initiate transmutation.");
 
     // Added security to prevent fake transmutation contracts
-    require(Realm(targetTransmutation.RealmOwner()).TransmutationExists(transmutation), "Transmutation must belong to it's realm.");
+    Realm targetRealm = Realm(targetTransmutation.RealmOwner());
+    require(targetRealm.TransmutationExists(transmutation), "Transmutation must belong to it's realm.");
+
 
     targetTransmutation.TransmuteItem(address(targetItem));
+    targetItem.TransferToRealm(address(targetRealm), targetTransmutation.TargetItemDefinition());
 
     _itemExists[address(targetItem)] = false;
   }

@@ -19,6 +19,12 @@ For this project i'm going to both design and implement a POC of this concept. I
 
 6 hours - Time isn't always something I have a lot of, and I don't want to be working on this across multiple days so this will probably be done in just one session (with breaks.)
 
+## Running the project
+
+I haven't tested on a clean environment, but running `yarn` and then `yarn test` should work. Unless theres a yarn install or something, dunno, new to yarn.
+
+(I tried to use NPM but I needed something that was only supported by yarn, which i've never used before... so yeah)
+
 ## Design
 
 I'm going to call the concept of individual games, `Realms` because I think it sounds neat.
@@ -90,11 +96,13 @@ So far I've identified a few discrete entities:
 
 I could implement this into one mega Smart Contract if I wanted to, but I'm going to try separating each of these entities into their own Smart Contract, define interfaces for each, and implement them separately. Optimization can come later.
 
-## Implementation
+## Implementation / Journal of work
 
-I haven't developed Smart Contracts in almost two years.
+I haven't developed Smart Contracts in almost two years, so i'm gonna be remembering while I go.
 
-### 1:53 PM
+Marking the times in this as Hours:Minutes from after getting my dev environment setup. I estimate that I worked ~1.5 hours before the first entry writing this stuff up and doing the design.
+
+### +0:00 (H:MM)
 
 Setting up my dev environment took longer than expected. I used truffle before so I figured out how to get that working again. I also found something called `typechain` which allows me to program in TypeScript which I highly prefer over plain old JavaScript.
 
@@ -104,7 +112,7 @@ I'll start with the Realm contract, but first I need to figure out how to make S
 
 Made the first commit.
 
-### 2:48 PM
+### +1:05
 
 Started to flesh out more of the contracts. Had to brush up on storage vs memory and the new solidity stuff.
 
@@ -114,24 +122,46 @@ Thinking of writing a sequence diagram of it.
 
 ![Handoff Diagram](images/item-handoff.png)
 
-Took a break until ~4:30PM
+Took a break.
 
-### 4:30 PM
+### +3:00
 
 Figuring out sequence of handing off an item between one realm to another.
 
 A `Realm` needs to keep track of all items a player owns. When a item gets moved from one realm to another, it needs to be removed from one realm and added to the other.
 
-### 6:10 PM
+### +3:40
 
 Main code is done in the contracts. Ditched all of the interfaces since this is a hack and it takes too much time to fix them. I'm remembering all of those strange quirks working with Solidity now.
 
 Now it's time to write the tests to make sure it works.
 
-
-### 6:30 PM
+### +4:00
 
 Tests are coming along. Need to stop for the day.
 
+### +4:00 (next day)
+
+Going to spend roughly an hour today to do one or two more tests, just to prove that the transmutation works. I expect that there are going to be a lot of security vulnerabilities and better ways of doing things, but I'm not going to have the time to actually figure those out all the way or implement them.
+
+### +4:20
+
+Finished the End 2 End test and it works! An item can be created in Realm A, and then transferred to Realm B, and the item definition and realm owner on the item will be updated as well.
+
+I'm going to consider this done, I set out and achieved a proof-of-concept of the core idea. Writing the outcome section now.
+
+## Outcome
+
+I was successfully able to create a proof of concept. I learned quite a few new things during it, and was able to warm my Solidity skills back up, it's really cool to see how far the language has come in two years.
+
+There are some gripes I have about my development stack, for instance even though I used TypeChain, truffle tests can't actually use typescript features, i'll have to see if there's a way around this but I didn't want to spend the time during this hack to figure that out.
+
+Additionally there are some things in Solidity that I've forgotten about, which I find a bit annoying. For instance there isn't an implicit cast between between a Smart Contract and an address. This meant a lot of my code had to explicitly cast an instance of a contract to an address when calling another contract. There might be ways around this, such as make the parameters the contracts themselves, but I didn't realize that was possible until I had already written some of my contracts.
+
+I also forgot about how difficult it is to delete an arbitrary element in an array by value. It would be a bad idea to have the contract iterate through the array to delete a given element, so that iteration will have to be offloaded out of the contract and into the caller code. This is a bit annoying since that means the contract will have to accept another parameter which would be the index of the thing that i'm trying to delete, and then additional logic to verify that, but I guess that's just life.
+
+Looking back at the work I did, there are a handful of things I would change. Firstly I would've eliminated the "Item Definition" contract and just made it a hash or unique identifier. There is no logic contained in it, so there's no point at this stage. There are also a few things I would've explored more, like control and management over items. I forgot a lot about how designing trust and security in smart contracts, especially when they interact with one another. It's always a fun problem, and if I were to continue working on this I would probably throw out 99% of the code I have and re-engineer it entirely.
+
+There are also a lot of guard rails and safety measures missing in my code, it's a POC so I guess that's fine though.
 
 
